@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals</title>
+</head>
+<style>
+   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+nav .logo {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin-right: 45vw;
+}
+
+nav ul li {
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li:hover {
+  color: #b3b3b3;
+}
+
+nav .icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .icons span {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.home-bar {
+  background-color: white;
+  z-index: 999;
+  margin-top: 56px;
+  height: auto;
+  justify-content: center;
+  border-bottom: 1px solid gray;
+  padding: 10px 20px;
+  font-size: 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+}
+
+.hero-container img {
+  width: 100%;
+  height: 35vw;
+  display: block;
+  object-fit: cover;
+  padding: 0 2vw;
+}
+
+.hero-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 18%;
+  color: white;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: bold;
+  line-height: 1.2;
+  width: 90%;
+  z-index: 10;
+}
+
+.product-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+  color: #555;
+  font-size: 23px;
+}
+
+.sort-by {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #555;
+}
+
+.section {
+  text-align: center;
+  padding: 60px 5%;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.product {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.product h3 {
+  font-size: 24px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.product p {
+  font-size: 18px;
+  color: #666;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.color-options {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.color-options span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.color-options span.white {
+  background: #fff;
+}
+
+.color-options span.black {
+  background: #000;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  padding: 60px 80px 30px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-column.about p {
+  color: #bbb;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-column.about strong {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.social-icons a {
+  color: #bbb;
+  margin-right: 15px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 18px;
+}
+
+.footer-country img {
+  width: 30px;
+  border-radius: 3px;
+  height: 20px;
+}
+
+.footer-copy {
+  color: #666;
+  font-size: 18px;
+}
+
+.chat-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #8a2be2;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+@media (max-width: 992px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  nav ul {
+    margin-right: 0;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-container img {
+    height: 50vw;
+  }
+
+  .hero-text {
+    top: 25%;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+
+  .product h3 {
+    font-size: 22px;
+  }
+
+  .product p {
+    font-size: 16px;
+  }
+
+  .footer {
+    padding: 50px 30px;
+  }
+
+  .footer-column ul li a {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container img {
+    height: 60vw;
+  }
+
+  .hero-text {
+    top: 30%;
+    font-size: clamp(1.6rem, 6vw, 2.6rem);
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .product {
+    padding: 15px;
+  }
+
+  .product img {
+    height: auto;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 10px 15px;
+  }
+
+  nav .logo {
+    font-size: 22px;
+  }
+
+  nav ul li {
+    font-size: 16px;
+  }
+
+  .hero-container img {
+    height: 70vw;
+  }
+
+  .hero-text {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    top: 35%;
+  }
+
+  .product h3 {
+    font-size: 20px;
+  }
+
+  .product p {
+    font-size: 15px;
+  }
+
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-copy,
+  .footer-country {
+    font-size: 16px;
+  }
+
+  .chat-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-container img {
+    height: 30vw;
+  }
+  .hero-text {
+    top: 20%;
+  }
+}
+
+</style>
+<body>
+    
+  <nav>
+    <div class="logo">NZXT</div>
+    <ul>
+      <li>PC Components</li>
+      <li>Gaming Gear</li>
+      <a href="connect.html"><li>Connect</li></a>
+      <li>Support</li>
+    </ul>
+    <div class="icons">
+       <div class="footer-country">
+        <img src="https://flagcdn.com/w20/in.png" alt="India Flag">
+        <span> </span> v <span>English v</span>
+      </div>
+      <span>🌐</span>
+      <span>❤️</span>
+      <span>🛒</span>
+    </div>
+  </nav>
+
+  <div class="home-bar">
+    <a href="index.html">Home</a>
+    <a href="">New Arrivals</a>
+  </div>
+
+  <div class="hero-container">
+  <img src="https://nzxt.com/cdn/shop/files/1920x630_Shopify_Center-Text_1.png?v=1759183041&width=1600" alt=" components">
+  <h2 class="hero-text">
+    Meet our latest<br>PC components
+  </h2>
+</div>
+
+<div class="product-header">
+    <span>22 products</span>
+    <div class="sort-by">
+      <span>Sort by</span>
+    </div>
+</div>
+
+
+  <section class="section">
+
+    <div class="products">
+        
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_F120X_Black_Carousel_Hero_EN.png?v=1761553068&width=500" alt="">
+        <h3>F120X</h3>
+        <p>120 mm Performance RGB Fan</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_F120X_Black_Carousel_Hero_EN.png?v=1761553068&width=500" alt="">
+        <h3>F140X</h3>
+        <p>140 mm Performance RGB Fan</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_F240X_Black_Carousel_Hero_EN.png?v=1761636973&width=500" alt="">
+        <h3>F240X</h3>
+        <p>240 mm Performance RGB Single-Frame Fan</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_F280X_Black_Carousel_Hero_EN.png?v=1761637533&width=500" alt="">
+        <h3>F280X</h3>
+        <p>280 mm Performance RGB Single-Frame Fan</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_F360X_Black_Carousel_Hero_EN.png?v=1761638142&width=500" alt="">
+        <h3>F360X</h3>
+        <p>360 mm Performance RGB Single-Frame Fan</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_KrakenCore240_BK_Carousel_Hero_EN.png?v=1758742499&width=500" alt="">
+        <h3>Kraken Core 240 RGB</h3>
+        <p>240 mm RGB AIO Liquid Cooler</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+      
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_KrakenCore360_BK_Carousel_Hero_EN.png?v=1758742619&width=500" alt="">
+        <h3>Kraken Core 360 RGB</h3>
+        <p>360 mm RGB AIO Liquid Cooler</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_C750GoldCore_Carousel_Hero_EN.png?v=1758743846&width=500" alt="">
+        <h3>C750 Gold Core</h3>
+        <p>750 Watt 80 PLUS Gold Fully Modular ATX 3.1 PSU</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <!-- <span class="white"></span> -->
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_C850GoldCore_Carousel_Hero_EN.png?v=1758743876&width=500" alt="">
+        <h3>C850 Gold Core</h3>
+        <p>850 Watt 80 PLUS Gold Fully Modular ATX 3.1 PSU</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <!-- <span class="white"></span> -->
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_C850GoldCore_Carousel_Hero_EN.png?v=1758743876&width=500" alt="">
+        <h3>C1000 Gold Core</h3>
+        <p>1000 Watt 80 PLUS Gold Fully Modular ATX 3.1 PSU</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <!-- <span class="white"></span> -->
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_C850GoldCore_Carousel_Hero_EN.png?v=1758743876&width=500" alt="">
+        <h3>C750 Bronze</h3>
+        <p>750W Bronze Non-Modular ATX 3.1 PSU</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <!-- <span class="white"></span> -->
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="https://nzxt.com/cdn/shop/files/Etail_H3Flow_WH_Carousel_Hero_EN.png?v=1762528246&width=500" alt="">
+        <h3>H3 Flow</h3>
+        <p>Micro-ATX Airflow Case</p>
+        <div class="color-options">
+          <span class="black"></span>
+          <span class="white"></span>
+        </div>
+      </div>
+
+    </div>
+    
+   
+  </section>
+
+   <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">NZXT For Business</a></li>
+          <li><a href="#">Manage Your Account</a></li>
+          <li><a href="#">Submit a Request</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>About NZXT</h4>
+        <ul>
+          <li><a href="#">Company</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Customer Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">NZXT × Intel Club</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Refer-a-Friend Program</a></li>
+          <li><a href="#">NZXT CAM Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column about">
+        <h4>For the 💜 of the game</h4>
+        <p>
+          <strong>At NZXT, we make PC gaming easy and fun.</strong><br>
+          Whether you’re building your dream setup or going hassle-free with a prebuilt, we’ve got you covered with quality components and expert support.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-twitch"></i></a>
+      </div>
+      <div class="footer-country">
+        <img src="https://flagcdn.com/w20/in.png" alt="India Flag">
+        <span>India</span> | <span>English</span>
+      </div>
+      <div class="footer-copy">
+        © 2025 - NZXT
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="chat-btn">💬</div>
+
+
+</body>
+</html>

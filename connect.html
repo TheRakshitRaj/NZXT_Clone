@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+nav .logo {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  margin-right: 45vw;
+}
+
+nav ul li {
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+nav ul li:hover {
+  color: #b3b3b3;
+}
+
+nav .icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .icons span {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.hero {
+  display: flex;
+  margin-top: 6vw;
+  padding: 10vh;
+  gap: 5vh;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  width: 50%;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 3vw;
+}
+
+.hero-text p {
+  font-size: 1.1vw;
+  line-height: 2vw;
+}
+
+.hero-img {
+  width: 25vw;
+  height: auto;
+  max-width: 100%;
+}
+
+.hero-text button {
+  width: 10vw;
+  height: 3vw;
+  justify-self: center;
+  align-self: center;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: rgb(133, 57, 255);
+  transition: 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: rgb(103, 37, 225);
+}
+
+.bg-container {
+  width: 100%;
+  padding: 3vw;
+  text-align: center;
+}
+
+.works {
+  font-size: 45px;
+  font-weight: bold;
+  margin-bottom: 1vw;
+}
+
+.works-p {
+  font-size: 25px;
+  margin-bottom: 3vw;
+}
+
+.rewards-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4vw;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin-bottom: 3vw;
+}
+
+.reward-card {
+  background: white;
+  width: 25vw;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reward-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.reward-card img {
+  width: 100%;
+  height: 24vw;
+  object-fit: cover;
+}
+
+.reward-content {
+  padding: 25px;
+}
+
+.reward-content h3 {
+  font-size: 2.1vw;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.reward-content p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  padding: 60px 80px 30px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #fff;
+}
+
+.footer-column.about p {
+  color: #bbb;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.footer-column.about strong {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.social-icons a {
+  color: #bbb;
+  margin-right: 15px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-country {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccc;
+  font-size: 20px;
+}
+
+.footer-country img {
+  width: 30px;
+  border-radius: 3px;
+  height: 20px;
+}
+
+.footer-copy {
+  color: #666;
+  font-size: 20px;
+}
+
+.chat-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #8a2be2;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+@media (max-width: 992px) {
+  nav ul {
+    margin-right: 0;
+    gap: 15px;
+  }
+
+  .hero {
+    padding: 8vh 5vw;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 6vw;
+  }
+
+  .hero-text p {
+    font-size: 2.5vw;
+    line-height: 1.6;
+  }
+
+  .hero-text button {
+    width: 40vw;
+    height: 10vw;
+    font-size: 4vw;
+  }
+
+  .reward-card {
+    width: 40vw;
+  }
+
+  .reward-card img {
+    height: 40vw;
+  }
+
+  .reward-content h3 {
+    font-size: 4vw;
+  }
+
+  .reward-content p {
+    font-size: 2.2vw;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav ul li {
+    font-size: 16px;
+  }
+
+  .hero {
+    margin-top: 100px;
+    padding: 5vh 3vw;
+  }
+
+  .hero-text h1 {
+    font-size: 8vw;
+  }
+
+  .hero-text p {
+    font-size: 4vw;
+  }
+
+  .hero-text button {
+    width: 50vw;
+    height: 12vw;
+    font-size: 4.5vw;
+  }
+
+  .reward-card {
+    width: 80vw;
+  }
+
+  .reward-card img {
+    height: 60vw;
+  }
+
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-copy,
+  .footer-country {
+    font-size: 4vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-text h1 {
+    font-size: 9vw;
+  }
+
+  .hero-text p {
+    font-size: 4.5vw;
+  }
+
+  .footer-copy {
+    font-size: 3.8vw;
+  }
+
+  .footer-column ul li a {
+    font-size: 4vw;
+  }
+}
+
+</style>
+<body>
+    
+  <nav>
+    <div class="logo">NZXT</div>
+    <ul>
+      <li>PC Components</li>
+      <li>Gaming Gear</li>
+      <li>Connect</li>
+      <li>Support</li>
+    </ul>
+    <div class="icons">
+       <div class="footer-country">
+        <img src="https://flagcdn.com/w20/in.png" alt="India Flag">
+        <span> </span> v <span>English v</span>
+      </div>
+      <span>🌐</span>
+      <span>❤️</span>
+      <span>🛒</span>
+    </div>
+  </nav>
+
+<div class="hero">
+
+   <div class="hero-text">
+      <h1>Welcome to the <br> NZXT × Intel Club </h1>
+      <p>Join the ultimate PC gaming community and unlock <br> exclusive rewards, giveaways, and experiences - <br>brought to you by NZXT and Intel.</p>
+      <button>Join the Club</button>
+  </div>
+
+   <img src="https://nzxt.com/cdn/shop/files/NZXT_x_INTEL_Club_Partnership_LOGO_400x230_16c34f2a-931c-4ba7-ba39-247969a2f241.png?v=1751001508&width=400" alt="" class="hero-img">
+  </div>
+
+
+<img class="bg-container" src="nzxt img.png">
+   
+</img>
+
+<div class="works">How it works</div>
+<div class="works-p">Get exclusive access to giveaways, digital goodies, and unique experiences.</div>
+
+ <section class="rewards-container">
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Complete_Quests_1000x1000_LG.png?v=1751001406&width=500" alt="Complete Quests" />
+      <div class="reward-content">
+        <h3>Complete Quests</h3>
+        <p>
+          Link your social media accounts and tackle fun quests on your favorite platforms.
+          The more quests you complete, the more you progress in the NZXT x Intel Club.
+        </p>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Earn_Pucci_Points_1000x1000_LG.png?v=1751001407&width=500" alt="Earn Pucci Points" />
+      <div class="reward-content">
+        <h3>Earn Pucci Points</h3>
+        <p>
+          Rack up points by completing quests and checking back daily for new opportunities.
+          Each quest gets you closer to exciting perks and exclusive experiences.
+        </p>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Unlock_Rewards_1000x1000_LG.png?v=1751001406&width=500" alt="Unlock Rewards" />
+      <div class="reward-content">
+        <h3>Unlock Rewards</h3>
+        <p>
+          Use your Pucci Points to access exclusive experiences and perks you won’t find
+          anywhere else. The more you participate, the greater the rewards!
+        </p>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Track_Your_Standing_1000x1000_LG-1.png?v=1751001406&width=500" alt="Unlock Rewards" />
+      <div class="reward-content">
+        <h3>See How You Stack Up</h3>
+        <p>
+          Climb the leaderboard by completing quests and earning Pucci Points. Compete with NZXT fans and showcase your status. The higher you rank, the better the rewards!
+        </p>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Track_Your_Standing_1000x1000_LG.png?v=1751001406&width=500" alt="Unlock Rewards" />
+      <div class="reward-content">
+        <h3>Invite Your Friends</h3>
+        <p>
+         Spread the word! Invite your friends to join the NZXT x Intel Club and earn Pucci Points when they sign up. The more friends you refer, the more rewards you’ll unlock!
+        </p>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <img src="https://nzxt.com/cdn/shop/files/NZXT_INTEL-CLUB_PAGE_Earn_Rewards_1000x1000_LG.png?v=1751001406&width=500" alt="Unlock Rewards" />
+      <div class="reward-content">
+        <h3>Your Rewards Await</h3>
+        <p>
+          Unlock a one-of-a-kind experience. The more you engage, the more exciting the rewards become. Welcome to the ultimate NZXT and Intel fan journey!
+        </p>
+      </div>
+    </div>
+  </section>
+
+   <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">NZXT For Business</a></li>
+          <li><a href="#">Manage Your Account</a></li>
+          <li><a href="#">Submit a Request</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>About NZXT</h4>
+        <ul>
+          <li><a href="#">Company</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Customer Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">NZXT × Intel Club</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Refer-a-Friend Program</a></li>
+          <li><a href="#">NZXT CAM Software</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column about">
+        <h4>For the 💜 of the game</h4>
+        <p>
+          <strong>At NZXT, we make PC gaming easy and fun.</strong><br>
+          Whether you’re building your dream setup or going hassle-free with a prebuilt, we’ve got you covered with quality components and expert support.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-twitch"></i></a>
+      </div>
+      <div class="footer-country">
+        <img src="https://flagcdn.com/w20/in.png" alt="India Flag">
+        <span>India</span> | <span>English</span>
+      </div>
+      <div class="footer-copy">
+        © 2025 - NZXT
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="chat-btn">💬</div>
+</body>
+</html>
