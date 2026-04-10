@@ -41,8 +41,3 @@ You only need a modern web browser (Chrome, Firefox, Safari, Edge) to view this 
 
 This project is an unofficial front-end clone created strictly for educational, practice, and portfolio purposes. I am not affiliated with, associated with, authorized, endorsed by, or in any way officially connected with NZXT. All product images, names, logos, and brands are the property of their respective owners.
 
-## 👨‍💻 Author
-
-**[Your Name/Username]**
-* GitHub: [@your-username](https://github.com/your-username)
-* Portfolio: [your-portfolio-link.com](https://your-portfolio-link.com)
